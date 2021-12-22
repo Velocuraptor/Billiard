@@ -2,39 +2,55 @@
 
 public class TrajectoryRenderer : MonoBehaviour
 {
-    public const int SimulationAccuracy = 100;
-
-    [SerializeField] private GameObject _whiteBallSimulated;
+    public const int SimulatedSteps = 100;
+    public const float LengthAfterCollided = 0.1f;
 
     [SerializeField] private LineRenderer _lineRenderer;
-
-    [SerializeField] private float _length = 2.0f;
+    [SerializeField] private WhiteBallSimulated _whiteBallSimulated;
 
     public void ShowTrajectory(Transform origin, Vector2 impactForce)
     {
-        var newBall = Instantiate(_whiteBallSimulated, origin.position, origin.rotation);
-        newBall.GetComponent<Rigidbody2D>().AddRelativeForce(impactForce, ForceMode2D.Impulse);
+        var simulatedBall = Instantiate(_whiteBallSimulated, origin.position, origin.rotation);
+        simulatedBall.GetComponent<Rigidbody2D>().AddRelativeForce(impactForce, ForceMode2D.Impulse);
 
-        Physics.autoSimulation = false;
+        Physics2D.autoSimulation = false;
 
-        var points = new Vector3[100];
+        var points = new Vector3[3];
+        points[0] = origin.position;
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < SimulatedSteps; i++)
         {
-            Physics.Simulate(0.1f);
-
-            points[i] = newBall.transform.position;
+            Physics2D.Simulate(0.1f);
+            if(i == SimulatedSteps - 1)
+            {
+                points[1] = simulatedBall.transform.position;
+                break;
+            }
+            if (simulatedBall.Collision == null)
+                continue;
         }
 
+        if(simulatedBall.Collision == null)
+        {
+            _lineRenderer.positionCount = 2;
+            _lineRenderer.SetPositions(points);
+            Physics2D.autoSimulation = true;
+            Destroy(simulatedBall.gameObject);
+            return;
+        }
+
+        points[1] = simulatedBall.Collision.contacts[0].point;
+        Physics2D.Simulate(0.1f);
+        points[2] = simulatedBall.transform.position;
+        _lineRenderer.positionCount = 3;
+
         _lineRenderer.SetPositions(points);
-
-        Physics.autoSimulation = true;
-
-        Destroy(newBall);
+        Physics2D.autoSimulation = true;
+        Destroy(simulatedBall.gameObject);
     }
 
     public void DeleteTrajectory()
     {
-        //_lineRenderer.positionCount = 0;
+        _lineRenderer.positionCount = 0;
     }
 }

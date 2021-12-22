@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8408495438609929862}
   - component: {fileID: 1630507765495160466}
   - component: {fileID: 7860182412878198793}
+  - component: {fileID: 5332802940243622830}
   m_Layer: 9
   m_Name: WhiteBallSimulated
   m_TagString: Ball
@@ -69,3 +70,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5332802940243622830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132241911321802686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93509dd159811ba468a76a10e60eb712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 7860182412878198793}
