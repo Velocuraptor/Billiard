@@ -529,7 +529,8 @@ MonoBehaviour:
   - {fileID: 3809322793259215996}
   - {fileID: 4675610801479081786}
   _trajectoryRenderer: {fileID: 0}
-  _startPackPrefab: {fileID: 0}
+  _startPackPrefab: {fileID: 7696161187823562995, guid: 2ca434df37eca8944800c59b3bd0145e,
+    type: 3}
   _whiteBall: {fileID: 0}
 --- !u!1 &3887538884637831951
 GameObject:

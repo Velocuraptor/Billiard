@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WhiteBall : MonoBehaviour
+public class WhiteBall : MonoBehaviour, IBall
 {
     [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
     [SerializeField] private Rigidbody2D _rigidbody2D;
@@ -8,10 +8,15 @@ public class WhiteBall : MonoBehaviour
 
     [SerializeField] private float _forceFactor = 1.0f;
 
-
     private Vector2 _direction;
-
     private Vector2 _impactForce => _direction * _forceFactor;
+
+    public Rigidbody2D RigidBody2D => _rigidbody2D;
+    public bool IsStop => Mathf.Abs(_rigidbody2D.velocity.x) <= 0.1f && Mathf.Abs(_rigidbody2D.velocity.y) <= 0.1f;
+    public bool IsWhiteBall => true;
+
+    public void Destroy() =>
+        Destroy(gameObject);
 
     public void SetParameters(Vector2 tapPoint)
     {

@@ -3,6 +3,6 @@ using UnityEngine;
 
 public class StartPack : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _balls;
-    public List<GameObject> Balls => _balls;
+    [SerializeField] private List<Ball> _balls;
+    public List<Ball> Balls => _balls;
 }

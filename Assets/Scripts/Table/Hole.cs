@@ -2,14 +2,15 @@
 
 public class Hole : MonoBehaviour
 {
-    public delegate void OnHole(GameObject gameObject);
+    public delegate void OnHole(IBall gameObject);
     public event OnHole HoleEvent;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Ball")
+        var ball = collision.GetComponent<IBall>();
+        if (ball == null)
             return;
 
-        HoleEvent?.Invoke(collision.gameObject);
+        HoleEvent?.Invoke(ball);
     }
 }
