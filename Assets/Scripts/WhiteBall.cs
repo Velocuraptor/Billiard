@@ -26,4 +26,12 @@ public class WhiteBall : MonoBehaviour
         _direction = Vector2.zero;
         _trajectoryRenderer.DeleteTrajectory();
     }
+
+    public void ResetData()
+    {
+        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.angularVelocity = 0.0f;
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+    }
 }

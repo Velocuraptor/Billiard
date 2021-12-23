@@ -22,9 +22,9 @@ public class TrajectoryRenderer : MonoBehaviour
     public void DeleteSavedBody(GameObject ball) =>
         _savedBodies.Remove(ball.GetComponent<Rigidbody2D>());
 
-    public void ShowTrajectory(Transform origin, Vector2 impactForce)
+    public void ShowTrajectory(Transform origin, Vector2 impactForce)//TODO::Refactor
     {
-        _lineRendererPlus.positionCount = 0;
+        DeleteTrajectory();
 
         foreach (var body in _savedBodies)
         {

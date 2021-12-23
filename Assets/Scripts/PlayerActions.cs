@@ -5,6 +5,7 @@ public class PlayerActions : MonoBehaviour
 {
     public static bool IsAction;
 
+
     public delegate void OnTap(Vector2 tapPoint);
     public event Action DropEvent;
     public event OnTap TapEvent;

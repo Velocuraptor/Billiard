@@ -529,9 +529,8 @@ MonoBehaviour:
   - {fileID: 3809322793259215996}
   - {fileID: 4675610801479081786}
   _trajectoryRenderer: {fileID: 0}
-  _balls: []
-  _startPack: {fileID: 5024561946411369710, guid: 2ca434df37eca8944800c59b3bd0145e,
-    type: 3}
+  _startPackPrefab: {fileID: 0}
+  _whiteBall: {fileID: 0}
 --- !u!1 &3887538884637831951
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +730,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.70434165, y: 0.7400049}
+  m_Offset: {x: -0.9832473, y: 1.0629488}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -742,7 +741,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6478753, y: 1.7310894}
+  m_Size: {x: 2.2056866, y: 2.3769772}
   m_EdgeRadius: 0
 --- !u!1 &7915284906047895084
 GameObject:
