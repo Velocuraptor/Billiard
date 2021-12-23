@@ -4,7 +4,7 @@ using UnityEngine;
 public class Table : MonoBehaviour
 {
     [SerializeField] private List<Hole> _holes;
-
+    [SerializeField] private TrajectoryRenderer _trajectoryRenderer;
     [SerializeField] private List<GameObject> _balls;
     [SerializeField] private GameObject _startPack;
 
@@ -14,15 +14,22 @@ public class Table : MonoBehaviour
     {
         foreach (var hole in _holes)
             hole.HoleEvent += BallKnocked;
+
+
+        StartGame();
     }
 
     private void StartGame()
     {
-
+        _trajectoryRenderer.Initialize(_balls);
     }
 
     private void BallKnocked(GameObject ball)
     {
+        if (PlayerActions.IsAction)
+            return;
+
+        _trajectoryRenderer.DeleteSavedBody(ball);
         _balls.Remove(ball);
         Destroy(ball);
     }
